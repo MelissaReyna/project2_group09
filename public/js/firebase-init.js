@@ -4,7 +4,7 @@ import { getDatabase, ref, set, get } from "firebase/database";
 
 // Firebase configuration
 const firebaseConfig = {
-    apiKey: "",
+    apiKey: "AIzaSyDb_RTH7_cs1LphLz7U2kuGJi12mBOOhTA",
     authDomain: "bfit-6de25.firebaseapp.com",
     projectId: "bfit-6de25",
     storageBucket: "bfit-6de25.appspot.com",
@@ -47,23 +47,25 @@ document.getElementById('forgotPassword')?.addEventListener('click', () => {
 });
 
 // Handle Registration
-document.getElementById('register')?.addEventListener('click', () => {
-    const email = prompt('Please enter your email:');
-    const password = prompt('Please enter your password:');
-    createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            alert("Registered successfully");
-            set(ref(database, 'users/' + userCredential.user.uid), { email: email })
-                .then(() => {
-                    console.log('User data saved to database');
-                })
-                .catch((error) => {
-                    console.error('Error saving user data: ', error);
-                });
-        })
-        .catch((error) => {
-            alert(error.message);
+document.getElementById('signupForm')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const name = document.getElementById('name').value;
+    const plan = document.getElementById('plan').value;
+
+    try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        await set(ref(database, 'users/' + userCredential.user.uid), {
+            name: name,
+            email: email,
+            plan: plan
         });
+        alert("Registered successfully");
+    } catch (error) {
+        alert(error.message);
+    }
 });
 
 // Fetch user data from Realtime Database
@@ -74,6 +76,7 @@ function fetchUserData(userId) {
         if (snapshot.exists()) {
             const userData = snapshot.val();
             console.log('User data:', userData);
+            // Use the data as needed
         } else {
             console.log('No user data found');
         }
