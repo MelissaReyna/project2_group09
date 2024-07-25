@@ -44,6 +44,9 @@ app.get('/forgot-password', (req, res) => res.render('forgot-password', { title:
 // Route for the registration page
 app.get('/sign-up', (req, res) => res.render('sign-up', { title: 'Sign Up - B-Fit' }));
 
+// Route for the dashboard page
+app.get('/dashboard', (req, res) => res.render('dashboard', { title: 'Dashboard - B-Fit' }));
+
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
