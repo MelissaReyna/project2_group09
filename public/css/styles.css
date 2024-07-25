@@ -1294,3 +1294,61 @@ img {
 .login_link:hover {
     text-decoration: underline;
 }
+
+/* Signup styles */
+.signup_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup_form {
+    display: flex;
+    flex-direction: column;
+}
+
+.signup_field {
+    margin-bottom: 1rem;
+}
+
+.signup_field label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.signup_field input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.signup_actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signup_button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    background: var(--second-color);
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    width: 100%;
+    text-align: center;
+}
+
+.signup_link {
+    color: var(--first-color);
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.signup_link:hover {
+    text-decoration: underline;
+}
