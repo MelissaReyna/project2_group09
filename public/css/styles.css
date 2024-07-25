@@ -1323,6 +1323,13 @@ img {
     width: 100%;
 }
 
+.signup_select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
 .signup_actions {
     display: flex;
     flex-direction: column;
@@ -1351,4 +1358,90 @@ img {
 
 .signup_link:hover {
     text-decoration: underline;
+}
+
+/* General Dashboard Styles */
+.dashboard {
+    padding: 2rem;
+}
+
+.dashboard_container {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.dashboard_card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+}
+
+.dashboard_title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--first-color-dark);
+}
+
+.dashboard_text {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: #666;
+}
+
+.dashboard_form_group {
+    margin-bottom: 1rem;
+}
+
+.dashboard_form_group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.dashboard_input, .dashboard_select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.dashboard_button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--second-color);
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
+
+.dashboard_button:hover {
+    background-color: var(--first-color);
+}
+
+.dashboard_summary {
+    margin-bottom: 1.5rem;
+}
+
+.dashboard_value {
+    font-weight: bold;
+}
+
+.dashboard_list {
+    margin-bottom: 1.5rem;
+}
+
+.dashboard_list li {
+    background-color: #f1f1f1;
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.greeting_title{
+    padding-bottom: 30px;
 }
