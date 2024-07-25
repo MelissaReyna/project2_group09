@@ -4,7 +4,7 @@ import { getDatabase, ref, set, get } from "firebase/database";
 
 // Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyDb_RTH7_cs1LphLz7U2kuGJi12mBOOhTA",
+    apiKey: "",
     authDomain: "bfit-6de25.firebaseapp.com",
     projectId: "bfit-6de25",
     storageBucket: "bfit-6de25.appspot.com",
