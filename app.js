@@ -42,7 +42,7 @@ app.get('/login', (req, res) => res.render('login', { title: 'Login - B-Fit' }))
 app.get('/forgot-password', (req, res) => res.render('forgot-password', { title: 'Forgot Password - B-Fit' }));
 
 // Route for the registration page
-app.get('/register', (req, res) => res.render('register', { title: 'Register - B-Fit' }));
+app.get('/sign-up', (req, res) => res.render('sign-up', { title: 'Sign Up - B-Fit' }));
 
 // Start the server
 const PORT = process.env.PORT || 3000;
