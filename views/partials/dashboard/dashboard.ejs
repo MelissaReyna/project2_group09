@@ -1,0 +1,84 @@
+<!-- ==================== DASHBOARD ==================== -->
+<section class="dashboard section" id="dashboard">
+    <div class="container">
+        <h1 class="greeting_title">Welcome, <span id="userName">User</span>!</h1>
+
+        <div class="dashboard_container grid">
+            <!-- Greeting Section -->
+
+            <!-- Plan Section -->
+            <article class="dashboard_card">
+                <h2 class="dashboard_title">Plan</h2>
+                <div class="dashboard_form_group">
+                    <select id="planSelect" class="dashboard_select">
+                        <option value="BASIC">Basic Plan</option>
+                        <option value="STANDARD">Standard Plan</option>
+                        <option value="DIAMOND">Diamond Package</option>
+                    </select>
+                    <button id="updatePlanButton" class="dashboard_button">Update Plan</button>
+                </div>
+            </article>
+
+            <!-- Nutrition Section -->
+            <article class="dashboard_card">
+                <h2 class="dashboard_title">Nutrition</h2>
+                <div id="nutritionSummary" class="dashboard_summary">
+                    <p>Breakfast: <span id="breakfastCalories" class="dashboard_value">0</span> calories</p>
+                    <p>Lunch: <span id="lunchCalories" class="dashboard_value">0</span> calories</p>
+                    <p>Dinner: <span id="dinnerCalories" class="dashboard_value">0</span> calories</p>
+                    <p>Monthly Total: <span id="monthlyCalories" class="dashboard_value">0</span> calories</p>
+                </div>
+                <form id="addFoodForm" class="dashboard_form">
+                    <div class="dashboard_form_group">
+                        <label for="foodCategory">Category:</label>
+                        <select id="foodCategory" class="dashboard_select">
+                            <option value="Breakfast">Breakfast</option>
+                            <option value="Lunch">Lunch</option>
+                            <option value="Dinner">Dinner</option>
+                        </select>
+                    </div>
+                    <div class="dashboard_form_group">
+                        <label for="foodItem">Food Item:</label>
+                        <input type="text" id="foodItem" class="dashboard_input" required>
+                    </div>
+                    <div class="dashboard_form_group">
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" id="quantity" class="dashboard_input" required>
+                    </div>
+                    <div class="dashboard_form_group">
+                        <label for="calories">Calories:</label>
+                        <input type="number" id="calories" class="dashboard_input" required>
+                    </div>
+                    <button type="submit" class="dashboard_button">Add Food Item</button>
+                </form>
+            </article>
+
+            <!-- Exercises Section -->
+            <article class="dashboard_card">
+                <h2 class="dashboard_title">Exercises</h2>
+                <div id="exerciseList" class="dashboard_list">
+                    <!-- Exercise list will be populated here -->
+                </div>
+                <form id="addExerciseForm" class="dashboard_form">
+                    <div class="dashboard_form_group">
+                        <label for="exerciseCategory">Category:</label>
+                        <select id="exerciseCategory" class="dashboard_select">
+                            <option value="Strength Training">Strength Training</option>
+                            <option value="Aerobics">Aerobics</option>
+                            <option value="Cardio">Cardio</option>
+                        </select>
+                    </div>
+                    <div class="dashboard_form_group">
+                        <label for="exerciseName">Exercise:</label>
+                        <input type="text" id="exerciseName" class="dashboard_input" required>
+                    </div>
+                    <button type="submit" class="dashboard_button">Add Exercise</button>
+                </form>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- Import Firebase Initialization JavaScript Module -->
+<script type="module" src="/js/firebase-init.js"></script>
+<script type="module" src="/js/dashboard.js"></script>
