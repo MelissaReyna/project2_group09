@@ -5,12 +5,24 @@
             <article class="signup_card">
                 <form id="signupForm" class="signup_form">
                     <div class="signup_field">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="signup_field">
                         <label for="email">Email</label>
                         <input type="email" id="email" name="email" required>
                     </div>
                     <div class="signup_field">
                         <label for="password">Password</label>
                         <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="signup_field">
+                        <label for="plan">Plan</label>
+                        <select id="plan" name="plan" class="signup_select" required>
+                            <option value="BASIC">Basic Plan</option>
+                            <option value="STANDARD">Standard Plan</option>
+                            <option value="DIAMOND">Diamond Package</option>
+                        </select>
                     </div>
                     <div class="signup_actions">
                         <button type="submit" class="signup_button">Sign Up</button>
