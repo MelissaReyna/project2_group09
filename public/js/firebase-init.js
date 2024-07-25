@@ -1,9 +1,8 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail, createUserWithEmailAndPassword } from "firebase/auth";
 import { getDatabase, ref, set, get } from "firebase/database";
 
-// Your web app's Firebase configuration
+// Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyDb_RTH7_cs1LphLz7U2kuGJi12mBOOhTA",
     authDomain: "bfit-6de25.firebaseapp.com",
@@ -12,7 +11,7 @@ const firebaseConfig = {
     messagingSenderId: "726642117873",
     appId: "1:726642117873:web:9be6ba475c57d59b902d50",
     measurementId: "G-E9DTNR6MME",
-    databaseURL: "https://bfit-6de25-default-rtdb.firebaseio.com/" // Add your Realtime Database URL
+    databaseURL: "https://bfit-6de25-default-rtdb.firebaseio.com/"
 };
 
 // Initialize Firebase
@@ -21,26 +20,22 @@ const auth = getAuth(app);
 const database = getDatabase(app);
 
 // Handle Login
-document.getElementById('loginForm').addEventListener('submit', (e) => {
+document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Signed in
-            alert("Logged in successfully");
-            // You can set user data in the Realtime Database here
-            // For example: set(ref(database, 'users/' + userCredential.user.uid), { email: email });
-            // Redirect or perform other actions
-        })
-        .catch((error) => {
-            alert(error.message);
-        });
+    try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        alert("Logged in successfully");
+        fetchUserData(userCredential.user.uid);
+    } catch (error) {
+        alert(error.message);
+    }
 });
 
 // Handle Forgot Password
-document.getElementById('forgotPassword').addEventListener('click', () => {
+document.getElementById('forgotPassword')?.addEventListener('click', () => {
     const email = prompt('Please enter your email:');
     sendPasswordResetEmail(auth, email)
         .then(() => {
@@ -52,14 +47,12 @@ document.getElementById('forgotPassword').addEventListener('click', () => {
 });
 
 // Handle Registration
-document.getElementById('register').addEventListener('click', () => {
+document.getElementById('register')?.addEventListener('click', () => {
     const email = prompt('Please enter your email:');
     const password = prompt('Please enter your password:');
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            // Registered
             alert("Registered successfully");
-            // You can save user data in the Realtime Database here
             set(ref(database, 'users/' + userCredential.user.uid), { email: email })
                 .then(() => {
                     console.log('User data saved to database');
@@ -67,23 +60,36 @@ document.getElementById('register').addEventListener('click', () => {
                 .catch((error) => {
                     console.error('Error saving user data: ', error);
                 });
-            // Redirect or perform other actions
         })
         .catch((error) => {
             alert(error.message);
         });
 });
 
-// Example function to retrieve user data
-function getUserData(userId) {
+// Fetch user data from Realtime Database
+function fetchUserData(userId) {
     const userRef = ref(database, 'users/' + userId);
+
     get(userRef).then((snapshot) => {
         if (snapshot.exists()) {
-            console.log(snapshot.val());
+            const userData = snapshot.val();
+            console.log('User data:', userData);
         } else {
-            console.log('No data available');
+            console.log('No user data found');
         }
     }).catch((error) => {
-        console.error(error);
+        console.error('Error fetching user data:', error);
     });
+}
+
+// Store additional user data (e.g., last login time)
+function storeUserData(userId, data) {
+    const userRef = ref(database, 'users/' + userId);
+    set(userRef, data)
+        .then(() => {
+            console.log('User data updated successfully');
+        })
+        .catch((error) => {
+            console.error('Error updating user data:', error);
+        });
 }
